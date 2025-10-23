@@ -1,0 +1,24 @@
+import { FC } from "react";
+
+
+export interface {{pascalCase name}}Props {
+onClick?: () => void;
+}
+
+
+export const {{pascalCase name}}: FC<{{pascalCase name}}Props> = ({ onClick }) => {
+const handleClick = () => {
+if (onClick) {
+onClick();
+} else {
+// TODO: implement button logic
+console.log('{{pascalCase name}} clicked');
+}
+};
+
+return (
+<button onClick={handleClick}>
+    {{pascalCase name}}
+</button>
+);
+};
