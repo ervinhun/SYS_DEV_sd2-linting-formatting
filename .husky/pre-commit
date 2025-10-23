@@ -1,1 +1,10 @@
-npm test
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Go into the project folder
+cd room-booking || exit 1
+echo "Running pre-commit hook in $(pwd)"
+
+
+# Run lint-staged for staged files
+npx lint-staged

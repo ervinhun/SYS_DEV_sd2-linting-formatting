@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
-import { Room } from "../domain/room.type";
-import { roomApi } from "../data/room.api";
+import { FC, useEffect, useState } from 'react';
+import { Room } from '../domain/room.type';
+import { roomApi } from '../data/room.api';
 
 export interface RoomListProps {
-  display: "list" | "grid";
+  display: 'list' | 'grid';
 }
 
 export const RoomList: FC<RoomListProps> = ({ display }) => {
@@ -18,21 +18,19 @@ export const RoomList: FC<RoomListProps> = ({ display }) => {
       setLoading(true);
       try {
         const rooms = await roomApi.getRooms();
-setRooms(rooms);
+        setRooms(rooms);
       } catch (error) {
         setError(error as string);
-} finally {
+      } finally {
         setLoading(false);
       }
     };
     fetchRooms();
-  }, []);
+  }, []); // Empty dependency array ensures this effect runs only once on mount
 
   if (loading) {
-    return
-      <div>
-Loading...
-      </div>;
+    return;
+    <div>Loading...</div>;
   }
 
   if (error) {
@@ -44,12 +42,7 @@ Loading...
       <h1>Room List</h1>
       <ul>
         {rooms.map((room) => {
-          const mins = Math.max(
-            0,
-            Math.ceil(
-              (new Date(room.nextAvailable).getTime() - Date.now()) / 60000
-            )
-          );
+          const mins = Math.max(0, Math.ceil((new Date(room.nextAvailable).getTime() - Date.now()) / 60000));
           const canBook = mins <= 60 && room.capacity >= 2;
           return (
             <li key={room.id}>

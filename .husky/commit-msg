@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+cd room-booking || exit 1
+
+# Check commit message format
+npx commitlint --edit "$1"
