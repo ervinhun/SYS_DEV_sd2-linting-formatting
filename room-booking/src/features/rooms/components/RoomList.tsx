@@ -18,10 +18,10 @@ export const RoomList: FC<RoomListProps> = ({ display }) => {
       setLoading(true);
       try {
         const rooms = await roomApi.getRooms();
-        setRooms(rooms);
+setRooms(rooms);
       } catch (error) {
         setError(error as string);
-      } finally {
+} finally {
         setLoading(false);
       }
     };
@@ -29,7 +29,10 @@ export const RoomList: FC<RoomListProps> = ({ display }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return
+      <div>
+Loading...
+      </div>;
   }
 
   if (error) {
