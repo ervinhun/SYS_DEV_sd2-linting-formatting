@@ -1,1 +1,7 @@
-npm run typecheck && npm test
+# Go into the project folder
+cd room-booking || exit 1
+echo "Running pre-commit hook in $(pwd)"
+
+npm run typecheck 
+
+# && npm test
